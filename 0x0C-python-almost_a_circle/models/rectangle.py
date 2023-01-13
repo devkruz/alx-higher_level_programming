@@ -43,7 +43,7 @@ class Rectangle(Base):
     @property
     def width(self):
         """ set/get the width of instance """
-        return self.width
+        return self.__width
 
     @width.setter
     def width(self, width):
@@ -56,7 +56,7 @@ class Rectangle(Base):
     @property
     def height(self):
         """ set/get height of instance """
-        return self.height
+        return self.__height
 
     @height.setter
     def height(self, height):
@@ -69,7 +69,7 @@ class Rectangle(Base):
     @property
     def x(self):
         """ set/get the x coordinate of instance """
-        return self.x
+        return self.__x
 
     @x.setter
     def x(self, x):
@@ -82,7 +82,7 @@ class Rectangle(Base):
     @property
     def y(self):
         """ set/get the y coordinate of instance """
-        return self.y
+        return self.__y
 
     @y.setter
     def y(self, y):
@@ -91,3 +91,7 @@ class Rectangle(Base):
         if y < 0:
             raise ValueError("{} must be >= 0".format("y"))
         self.__y = y
+
+    def area(self):
+        """ get the area of the instance """
+        return self.__width * self.__height
