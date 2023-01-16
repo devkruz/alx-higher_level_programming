@@ -99,9 +99,15 @@ class Rectangle(Base):
         """ print the instance with # char """
         l = self.height
         b = self.width
+        x = self.x
+        y = self.y
 
-        for h in range(l):
-            for w in range(b):
+        for tmp in range(y):
+            print("")
+        for tmp in range(l):
+            for tmp in range(x):
+                print(" ", end="")
+            for tmp in range(b):
                 print("#", end="")
             print()
 
