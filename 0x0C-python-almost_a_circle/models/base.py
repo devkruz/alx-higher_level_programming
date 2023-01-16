@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Base class defination """
-from json import dumps
+from json import dumps, loads
 
 class Base:
     """
@@ -55,3 +55,12 @@ class Base:
             else:
                 to_dic = [obj.to_dictionary() for obj in list_objs]
                 jfile.write(Base.to_json_string(to_dic))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """ JSON string to dictionary """
+        if json_string is None or\
+        json_string == "":
+            return {}
+        else:
+            return loads(json_string)
