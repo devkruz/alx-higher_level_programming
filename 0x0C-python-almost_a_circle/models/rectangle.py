@@ -38,7 +38,7 @@ class Rectangle(Base):
         self.__height = height
         self.__x = x
         self.__y = y
-        Base.__init__(self, id)
+        super().__init__(id)
 
     @property
     def width(self):
@@ -95,22 +95,74 @@ class Rectangle(Base):
     def area(self):
         """ get the area of the instance """
         return self.__width * self.__height
+
     def display(self):
         """ print the instance with # char """
-        l = self.height
-        b = self.width
+        length = self.height
+        breath = self.width
         x = self.x
         y = self.y
 
         for tmp in range(y):
             print("")
-        for tmp in range(l):
+        for tmp in range(length):
             for tmp in range(x):
                 print(" ", end="")
-            for tmp in range(b):
+            for tmp in range(breath):
                 print("#", end="")
             print()
 
+    def update(self, *args):
+        """ updates the instance attributes
+            args:
+                args[0](int) - id
+                args[1](int) - width
+                args[2](int) - height
+                args[3](int) - x
+                args[4](int) - y
+         """
+        try:
+            id = args[0]
+            super().__init__(id)
+        except IndexError:
+            pass
+        try:
+            width = args[1]
+            if not isinstance(width, int):
+                raise TypeError("{} must be an integer".format("width"))
+            if width <= 0:
+                raise ValueError("{} must be > 0".format("width"))
+            self.width = width
+        except IndexError:
+            pass
+        try:
+            height = args[2]
+            if not isinstance(height, int):
+                raise TypeError("{} must be an integer".format("height"))
+            if height <= 0:
+                raise ValueError("{} must be > 0".format("height"))
+            self.height = height
+        except IndexError:
+            pass
+        try:
+            x = args[3]
+            if not isinstance(x, int):
+                raise TypeError("{} must be an integer".format("x"))
+            if x < 0:
+                raise ValueError("{} must be >= 0".format("x"))
+            self.x = x
+        except IndexError:
+            pass
+        try:
+            y = args[4]
+            if not isinstance(y, int):
+                raise TypeError("{} must be an integer".format("y"))
+            if y < 0:
+                raise ValueError("{} must be >= 0".format("y"))
+            self.y = y
+        except IndexError:
+            pass
+
     def __str__(self):
         return "[Rectangle] ({}) {}/{} - {}/{}"\
-        .format(self.id, self.x, self.y, self.width, self.height)
+            .format(self.id, self.x, self.y, self.width, self.height)
