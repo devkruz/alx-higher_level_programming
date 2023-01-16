@@ -163,6 +163,16 @@ class Rectangle(Base):
         except IndexError:
             pass
 
+    def to_dictionary(self):
+        """ Dictionary representation of instance """
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y
+        }
+
     def __str__(self):
         """ Instance representation """
         return "[Rectangle] ({}) {}/{} - {}/{}"\
