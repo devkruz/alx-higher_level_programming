@@ -1,9 +1,7 @@
+import models.rectangle as Rec
 
-
-class Test:
-
-    def __init__(self, id):
-        self.id = id
+class Test(Rec):
+    pass
 
 
 test = Test(3)
