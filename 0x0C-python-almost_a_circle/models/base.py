@@ -11,7 +11,7 @@ class Base:
     Priviate class attribute:
     __nb_objects: number of instance initialized
 
-     """
+    """
 
     __nb_objects = 0
 
@@ -77,3 +77,22 @@ class Base:
 
         new_rec.update(**dictionary)
         return new_rec
+
+    @classmethod
+    def load_from_file(cls):
+        """ loads instances from file
+
+            returns: list of instance if json file
+            equivalent to the class name exit else
+            empty list
+        """
+        file = cls.__name__ + ".json"
+        try:
+            with open(file) as jfile:
+                json_string = jfile.read()
+                dic_list = cls.from_json_string(json_string)
+                obj_list = [cls.create(**each_dic) for each_dic in dic_list]
+
+                return obj_list
+        except IOError:
+            return []
