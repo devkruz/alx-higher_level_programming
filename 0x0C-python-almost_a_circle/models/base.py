@@ -2,6 +2,7 @@
 """ Base class defination """
 from json import dumps, loads
 
+
 class Base:
     """
     Base - The base class of every other
@@ -34,8 +35,7 @@ class Base:
             list_dictionaries: list dictionary
 
         """
-        if list_dictionaries is None or\
-        list_dictionaries == []:
+        if list_dictionaries is None or list_dictionaries == []:
             return []
         return dumps(list_dictionaries)
 
@@ -48,9 +48,9 @@ class Base:
 
         """
         file = cls.__name__ + ".json"
-        with  open(file, "w") as jfile:
+        with open(file, "w") as jfile:
             if list_objs is None or\
-                list_objs == []:
+             list_objs == []:
                 jfile.write("[]")
             else:
                 to_dic = [obj.to_dictionary() for obj in list_objs]
@@ -59,8 +59,7 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """ JSON string to dictionary """
-        if json_string is None or\
-        json_string == "":
+        if json_string is None or json_string == "":
             return {}
         else:
             return loads(json_string)
