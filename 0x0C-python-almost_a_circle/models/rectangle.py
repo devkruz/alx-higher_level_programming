@@ -112,7 +112,7 @@ class Rectangle(Base):
                 print("#", end="")
             print()
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ updates the instance attributes
             args:
                 args[0](int) - id
@@ -121,47 +121,92 @@ class Rectangle(Base):
                 args[3](int) - x
                 args[4](int) - y
          """
-        try:
-            id = args[0]
-            super().__init__(id)
-        except IndexError:
-            pass
-        try:
-            width = args[1]
-            if not isinstance(width, int):
-                raise TypeError("{} must be an integer".format("width"))
-            if width <= 0:
-                raise ValueError("{} must be > 0".format("width"))
-            self.width = width
-        except IndexError:
-            pass
-        try:
-            height = args[2]
-            if not isinstance(height, int):
-                raise TypeError("{} must be an integer".format("height"))
-            if height <= 0:
-                raise ValueError("{} must be > 0".format("height"))
-            self.height = height
-        except IndexError:
-            pass
-        try:
-            x = args[3]
-            if not isinstance(x, int):
-                raise TypeError("{} must be an integer".format("x"))
-            if x < 0:
-                raise ValueError("{} must be >= 0".format("x"))
-            self.x = x
-        except IndexError:
-            pass
-        try:
-            y = args[4]
-            if not isinstance(y, int):
-                raise TypeError("{} must be an integer".format("y"))
-            if y < 0:
-                raise ValueError("{} must be >= 0".format("y"))
-            self.y = y
-        except IndexError:
-            pass
+        if args and len(args) != 0:
+            try:
+                id = args[0]
+                super().__init__(id)
+            except IndexError:
+                pass
+
+            try:
+                width = args[1]
+                if not isinstance(width, int):
+                    raise TypeError("{} must be an integer".format("width"))
+                if width <= 0:
+                    raise ValueError("{} must be > 0".format("width"))
+                self.width = width
+            except IndexError:
+                pass
+
+            try:
+                height = args[2]
+                if not isinstance(height, int):
+                    raise TypeError("{} must be an integer".format("height"))
+                if height <= 0:
+                    raise ValueError("{} must be > 0".format("height"))
+                self.height = height
+            except IndexError:
+                pass
+
+            try:
+                x = args[3]
+                if not isinstance(x, int):
+                    raise TypeError("{} must be an integer".format("x"))
+                if x < 0:
+                    raise ValueError("{} must be >= 0".format("x"))
+                self.x = x
+            except IndexError:
+                pass
+
+            try:
+                y = args[4]
+                if not isinstance(y, int):
+                    raise TypeError("{} must be an integer".format("y"))
+                if y < 0:
+                    raise ValueError("{} must be >= 0".format("y"))
+                self.y = y
+            except IndexError:
+                pass
+
+        if kwargs and len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == "id":
+                    id = value
+                    super().__init__(id)
+
+                if key == "width":
+                    width = value
+                    if not isinstance(width, int):
+                        raise TypeError("{} must be an integer"
+                                        .format("width"))
+                    if width <= 0:
+                        raise ValueError("{} must be > 0".format("width"))
+                    self.width = width
+
+                if key == "height":
+                    height = value
+                    if not isinstance(height, int):
+                        raise TypeError("{} must be an integer"
+                                        .format("height"))
+                    if height <= 0:
+                        raise ValueError("{} must be > 0".format("height"))
+                    self.height = height
+
+                if key == "x":
+                    x = value
+                    if not isinstance(x, int):
+                        raise TypeError("{} must be an integer".format("x"))
+                    if x < 0:
+                        raise ValueError("{} must be >= 0".format("x"))
+                    self.x = x
+
+                if key == "y":
+                    y = value
+                    if not isinstance(y, int):
+                        raise TypeError("{} must be an integer".format("y"))
+                    if y < 0:
+                        raise ValueError("{} must be >= 0".format("y"))
+                    self.y = y
 
     def to_dictionary(self):
         """ Dictionary representation of instance """
