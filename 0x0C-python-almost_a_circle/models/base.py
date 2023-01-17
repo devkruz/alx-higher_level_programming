@@ -63,3 +63,17 @@ class Base:
             return []
         else:
             return loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """ create a new instance
+            args:
+                dictionary: dictionary containing instance attribute
+        """
+        if cls.__name__ == "Rectangle":
+            new_rec = cls(2, 2)
+        else:
+            new_rec = cls(2)
+
+        new_rec.update(**dictionary)
+        return new_rec
