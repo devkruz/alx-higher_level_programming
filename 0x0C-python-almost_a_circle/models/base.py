@@ -36,7 +36,7 @@ class Base:
 
         """
         if list_dictionaries is None or list_dictionaries == []:
-            return []
+            return "[]"
         return dumps(list_dictionaries)
 
     @classmethod
@@ -60,6 +60,6 @@ class Base:
     def from_json_string(json_string):
         """ JSON string to dictionary """
         if json_string is None or json_string == "":
-            return {}
+            return []
         else:
             return loads(json_string)
