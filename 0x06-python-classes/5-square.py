@@ -37,9 +37,8 @@ class Square:
         """Prints the area of the square instance"""
 
         if self.__size == 0:
-            print(" ")
-        else:
-            for row in range(self.__size):
-                for hash in range(self.__size):
-                    print("#", end="")
-                print("")
+            print("")
+
+        for row in range(self.__size):
+            [print("#", end="") for hash in range(self.__size)]
+            print("")
