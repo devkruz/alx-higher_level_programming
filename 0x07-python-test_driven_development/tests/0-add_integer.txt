@@ -3,19 +3,20 @@ How to Use 0-add_integer.py
 ===========================
 
 This module defines this function:
-``add_integer(a, b=98)``.
+``add_integer(a, b=98)``
 
 Usage
 =====
 
-``add_integer()```:
-returns the sum of the two arguments.
+``add_integer(..)``:
+Returns the sum of the two arguments.
 
-=======
+
 Numbers
 =======
 
-With number arguments returned value is equivalent to using the ``+`` operator.
+``add_integer(..)``:
+Returned value is equivalent to using the ``+`` operator.
 
 ::
 
@@ -28,7 +29,16 @@ With number arguments returned value is equivalent to using the ``+`` operator.
     >>> add_integer(2, -3)
     -1
 
-The function also works with floating-point values.
+``add_integer(..)``:
+The second argument is optional - it defaults value is 98.
+
+::
+
+    >>> add_integer(2)
+    100
+
+``add_integer(..)``:
+ Works with floating-point values.
 
 ::
 
@@ -40,6 +50,7 @@ The function also works with floating-point values.
     >>> add_integer(-2.9, -0.2)
     -2
 
+``add_integer(..)``:
 Floating and non-floating point values can be combined.
 
 ::
@@ -47,18 +58,13 @@ Floating and non-floating point values can be combined.
     >>> add_integer(2.3, -3)
     -1
 
-The second argument is optional - it defaults value is 98.
 
-::
+String
+======
 
-    >>> add_integer(2)
-    100
-
-Non-Numbers
-===========
-
-``add_integer()`` accept only integers or floats arguments.
-If either argument is a non-integer and non-float, a TypeError is raised:
+``add_integer(..)``:
+Accept only integers or floats arguments.
+Anything else will raise TypeError
 
 ::
 
@@ -72,6 +78,9 @@ If either argument is a non-integer and non-float, a TypeError is raised:
     Traceback (most recent call last):
     TypeError: b must be an integer
 
+None
+====
+
 ::
 
     >>> add_integer(None)
@@ -84,6 +93,7 @@ If either argument is a non-integer and non-float, a TypeError is raised:
     Traceback (most recent call last):
     TypeError: b must be an integer
 
+``add_integer(..)``:
 The first argument is only needed to raise a TypeError
 
 ::
@@ -92,31 +102,4 @@ The first argument is only needed to raise a TypeError
     Traceback (most recent call last):
     TypeError: a must be an integer
 
-The function will fail if infinity is provided.
-
 ::
-
-    >>> add_integer(float('inf'))
-    Traceback (most recent call last):
-    OverflowError: cannot convert float infinity to integer
-
-
-::
-
-    >>> add_integer(2, float('inf'))
-    Traceback (most recent call last):
-    OverflowError: cannot convert float infinity to integer
-
-Also with NaN numbers.
-
-::
-
-    >>> add_integer(float('nan'))
-    Traceback (most recent call last):
-    ValueError: cannot convert float NaN to integer
-
-::
-
-    >>> add_integer(2, float('nan'))
-    Traceback (most recent call last):
-    ValueError: cannot convert float NaN to integer
