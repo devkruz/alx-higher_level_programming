@@ -5,11 +5,11 @@
 def print_square(size):
     """Print a square with the character #"""
 
-    if isinstance(size, int) == False:
+    if isinstance(size, int) is False:
         raise TypeError("size must be an integer")
     if size < 0:
         raise ValueError("size must be >= 0")
-    if isinstance(size, float) == True and size < 0:
+    if isinstance(size, float) is True and size < 0:
         raise TypeError("size must be an integer")
 
     for row in range(size):
