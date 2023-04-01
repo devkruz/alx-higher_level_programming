@@ -11,9 +11,14 @@ def text_indentation(text):
     if isinstance(text, str) is False:
         raise ("text must be a string")
 
-    for cha in text:
-        if cha == '.' or ',' or '/' or ':':
+    for cha in range(len(text)):
+        if text[cha] == '.' or text[cha] == ',' or text[cha] == '/' or\
+              text[cha] == ':':
             print("")
             print("")
+        elif (text[cha] == " ") and\
+                (text[cha - 1] == '.' or text[cha - 1] == ',' or
+                    text[cha - 1] == '/' or text[cha - 1] == ':'):
+            pass
         else:
-            print(cha)
+            print(text[cha], end="")
