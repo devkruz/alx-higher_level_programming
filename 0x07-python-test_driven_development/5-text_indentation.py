@@ -9,7 +9,7 @@ def text_indentation(text):
     """
 
     if isinstance(text, str) is False:
-        raise ("text must be a string")
+        raise TypeError("text must be a string")
 
     for cha in range(len(text)):
         if text[cha] == '.' or text[cha] == ',' or text[cha] == '/' or\
