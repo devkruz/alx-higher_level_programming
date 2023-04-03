@@ -3,19 +3,43 @@ How to use 4-print_square.py
 ============================
 
 This module define this functon:
-``print_square(.)``
+``print_square(size)``
 
 Usage
 =====
 ``print_square(.)``:
 Print a square with the character #
 
-``print_square(.)``:
-The size of the length must be an integer
 
 ::
 
     >>> print_square = __import__("4-print_square").print_square
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+::
+
+::
+
+    >>> print_square = __import__("4-print_square").print_square
+    >>> print_square(6)
+    ######
+    ######
+    ######
+    ######
+    ######
+    ######
+
+::
+
+``print_square(.)``:
+The parameter `size` must be an integer
+
+::
+
     >>> print_square("three")
     Traceback (most recent call last):
     TypeError: size must be an integer
@@ -24,9 +48,44 @@ The size of the length must be an integer
 
 ::
 
-    >>> print_square = __import__("4-print_square").print_square
     >>> print_square(-1)
     Traceback (most recent call last):
     ValueError: size must be >= 0
+
+::
+
+::
+
+    >>> print_square(None)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+::
+
+::
+
+    >>> print_square(5.5)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+::
+
+``print_square(.)``:
+Request at least one argument
+
+::
+
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
+
+::
+
+``print_square(.)``:
+If `size` is zero it print nothing
+
+::
+
+    >>> print_square(0)
 
 ::
