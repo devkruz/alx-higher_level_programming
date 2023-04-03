@@ -6,8 +6,8 @@ def matrix_divided(matrix, div):
     """Divides all elements of a matrix."""
 
     if isinstance(matrix, list) is not True:
-        raise TypeError("matrix must be a matrix\
-                        (list of lists) of integers/floats")
+        raise TypeError("matrix must be a matrix (list of lists)"
+                        " of integers/floats")
 
     if isinstance(div, int) is False and isinstance(div, float) is False:
         raise TypeError("div must be a number")
@@ -17,13 +17,13 @@ def matrix_divided(matrix, div):
 
     for row in matrix:
         if isinstance(row, list) is False:
-            raise TypeError("matrix must be a matrix (list of lists\
-                             of integers/floats")
+            raise TypeError("matrix must be a matrix (list of lists)"
+                            " of integers/floats")
         for num in row:
             if isinstance(num, int) is False and\
                     isinstance(num, float) is False:
-                raise TypeError("matrix must be a matrix (list of lists)\
-                                 of integers/floats")
+                raise TypeError("matrix must be a matrix (list of lists)"
+                                " of integers/floats")
 
     size = len(matrix[0])
 
