@@ -3,12 +3,12 @@ How to use 3-say_my_name.py
 ===========================
 
 This module defines this function:
-``say_my_name(..)``
+``say_my_name(first_name, last_name="")``
 
 Usage
 =====
 ``say_my_name(..)``:
-Print the name in the paramete
+Print the name in the parameter
 
 ``say_my_name(..)``:
 Both argument must be strings
@@ -18,8 +18,7 @@ Both argument must be strings
    >>> say_my_name = __import__("3-say_my_name").say_my_name
    >>> say_my_name("John", "Smith")
    My name is John Smith
-   >>> say_my_name("Walter", "White")
-   My name is Walter White
+
 
 ::
 
@@ -28,5 +27,56 @@ Both argument must be strings
     >>> say_my_name(12, "White")
     Traceback (most recent call last):
     TypeError: first_name must be a string
+
+::
+
+::
+
+    >>> say_my_name(["John"], "White")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+::
+
+::
+
+    >>> say_my_name({"first_name": "John"}, "White")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+::
+
+::
+
+    >>> say_my_name("John", ["White"])
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+::
+
+::
+
+    >>> say_my_name("John", {"last_name":"White"})
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+::
+
+::
+
+    >>> say_my_name(None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+::
+
+
+``say_my_name(..)``:
+`last_name` parameter is optional
+
+::
+
+   >>> say_my_name("John")
+   My name is John
 
 ::
