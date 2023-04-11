@@ -1,0 +1,81 @@
+=======================
+How to use 1-my_list.py
+=======================
+
+This module contains this attribute:
+`Mylist(..)`
+
+=====
+Usage
+=====
+
+`Mylist(..)` ineherite from list object.
+It has all the property of a list object.
+
+::
+
+    >>> MyList = __import__('1-my_list').MyList
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(5)
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+::
+
+::
+
+    >>> print(my_list.copy())
+    [1, 4, 2, 3, 5]
+
+::
+
+Also has it own property.
+
+::
+
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+
+::
+
+The property those not mutate the original
+lis.
+
+::
+
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+::
+
+
+Check for module docstring.
+
+::
+
+    >>> len(__import__("1-my_list").__doc__) > 1
+    True
+
+::
+
+Check for class docstring.
+
+::
+
+    >>> len(my_list.__doc__) > 1
+    True
+
+::
+
+Check for method docstring.
+
+::
+
+	  >>> len(my_list.print_sorted.__doc__) > 1
+	  True
+
+::

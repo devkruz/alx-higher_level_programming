@@ -3,9 +3,11 @@
 
 
 class MyList(list):
-    """ list class child"""
+    """list class child"""
     def __init__(self):
-        """ object initialization """
+        """object initialization"""
         super().__init__(self)
+
     def print_sorted(self):
+        """print the sorted list object"""
         print(sorted(self))
