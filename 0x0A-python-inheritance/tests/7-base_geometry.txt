@@ -1,0 +1,47 @@
+=============================
+How to use 7-base_geometry.py
+=============================
+
+This module contains this attribute:
+`BaseGeometry`
+
+=====
+Usage
+=====
+This is a base class
+
+
+Check for module docstring.
+
+::
+
+    >>> len(__import__("7-base_geometry").__doc__) > 1
+    True
+
+::
+
+Check for class docstring.
+
+::
+
+    >>> bg = __import__("7-base_geometry").BaseGeometry
+    >>> len(bg.__doc__) > 1
+    True
+
+::
+
+Check for method docstring.
+
+::
+
+	  >>> len(bg.area.__doc__) > 1
+	  True
+
+::
+
+::
+
+	  >>> len(bg.integer_validator.__doc__) > 1
+	  True
+
+::
