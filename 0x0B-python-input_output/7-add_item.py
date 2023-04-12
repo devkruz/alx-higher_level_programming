@@ -20,17 +20,21 @@ def main():
     """
 
     if __name__ == "__main__":
-        save_to_json = __import__('5-save_to_json_file.py')\
+        save_to_json = __import__('5-save_to_json_file')\
             .save_to_json_file
-        load_from_json = __import__("6-load_from_json_file.py")\
+        load_from_json = __import__("6-load_from_json_file")\
             .load_from_json_file
 
         try:
-            list = load_from_json("add_item.json")
+            a_list = load_from_json("add_item.json")
         except FileNotFoundError:
-            list = []
+            a_list = []
+        else:
+            if not isinstance(a_list, list):
+                raise TypeError("Expecting a list")
         finally:
-            list.extend(argv[1:])
-            save_to_json(list, "add_item.json")
+            a_list.extend(argv[1:])
+            save_to_json(a_list, "add_item.json")
+
 
 main()
