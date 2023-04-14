@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Base class defination """
 from json import dumps, loads
+import csv
 
 
 class Base:
@@ -42,9 +43,10 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """
-        Save JSON string representation to a file
+        Save JSON string representation of a
+        object to a file
         args:
-            list_objs: list dictionary
+            list_objs: list of instance
 
         """
         file = cls.__name__ + ".json"
@@ -80,7 +82,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """ loads instances from file
+        """Load instances from json file
 
             returns: list of instance if json file
             equivalent to the class name exit else
@@ -96,3 +98,28 @@ class Base:
                 return obj_list
         except IOError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Save CSV representation of an object to a file"""
+        file = cls.__name__ + ".csv"
+        with open(file, mode="w") as cvsfile:
+            if list_objs is None or\
+                    list_objs == []:
+                cvsfile.write("[]")
+            else:
+                table = list_objs[0].to_dictionary().keys()
+                dic_writer = csv.DictWriter(cvsfile, fieldnames=table)
+                dic_writer.writeheader()
+                for objs in list_objs:
+                    dic_writer.writerow(objs.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Load instance from a CSV file"""
+        file = cls.__name__ + ".csv"
+        with open(file) as csvfile:
+            dic_reader = csv.DictReader(csvfile)
+            obj_list = [dict([k, int(v)] for k, v in each_dic.items())
+                        for each_dic in dic_reader]
+            return obj_list

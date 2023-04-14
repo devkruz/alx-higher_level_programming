@@ -14,15 +14,11 @@ class Test_init(unittest.TestCase):
         """ Initialize without arguments """
         b1 = Base()
         b2 = Base()
-        self.assertEqaul(b1.id, b2.id - 1)
+        self.assertAlmostEqual(b2.id, (b1.id + 1))
 
     def test_arg(self):
         """ Initialize with argument """
         b1 = Base(44)
         b2 = Base(41)
-        self.assertEqaul(b1.id, 44)
+        self.assertAlmostEqual(b1.id, 44)
         self.assertEqual(b2.id, 41)
-
-
-if __name__ == "main":
-    unittest.main()
