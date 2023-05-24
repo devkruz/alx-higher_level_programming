@@ -1,0 +1,11 @@
+
+object = main.o school.0
+
+all: $(object)
+    gcc $(object)
+
+main.0: main.c m.h
+    gcc main.c -o main.o
+
+school.o: school.c m.h
+    gcc school.c -o school.o
