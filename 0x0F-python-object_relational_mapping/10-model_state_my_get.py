@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""List all States from Database"""
+"""Print States Object"""
 from model_state import Base, State
 from sys import argv
 from sqlalchemy import (create_engine)
@@ -13,7 +13,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    records = session.query(State).filter(State.name.like("%a%"))\
-        .order_by(State.id).all()
-    for col in records:
-        print(col.id, col.name, sep=': ')
+    records = session.query(State).filter(State.name == (argv[4], )).all()
+    if records == []:
+        print("Not found")
+    else:
+        for col in records:
+            print(col.id)
