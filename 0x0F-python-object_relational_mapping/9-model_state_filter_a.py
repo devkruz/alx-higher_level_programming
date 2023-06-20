@@ -13,8 +13,10 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    records = session.query(State).order_by(State.id).all()[0]
+    records = session.query(State).filter(State.name.like("%a%"))\
+        .order_by(State.id)
     if records is None:
         print("Nothing")
     else:
-        print(records.name)
+        for col in records:
+            print(col.id, col.name, sep=': ')

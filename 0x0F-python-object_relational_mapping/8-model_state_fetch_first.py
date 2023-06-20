@@ -13,7 +13,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    first_record = session.query(State).order_by(State.id).all()[0]
+    first_record = session.query(State).order_by(State.id).first()
     if first_record is None:
         print("Nothing")
     else:
