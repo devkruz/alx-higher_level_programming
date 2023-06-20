@@ -5,10 +5,13 @@ from sys import argv
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine("mysql://{}:{}@localhost/{}".format(argv[1], argv[2], argv[3]))
-Base.metadata.create_all(engine)
-Session = sessionmaker(bind=engine)
-session = Session()
 
-for col in session.query(State).order_by(State.id):
-    print(col.id, col.name, sep=': ')
+if __name__ == "__main__":
+    engine = create_engine("mysql://{}:{}@localhost/{}"
+                           .format(argv[1], argv[2], argv[3]))
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    for col in session.query(State).order_by(State.id):
+        print(col.id, col.name, sep=': ')
